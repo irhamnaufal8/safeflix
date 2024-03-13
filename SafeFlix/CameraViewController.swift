@@ -19,6 +19,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var previewLayer: AVCaptureVideoPreviewLayer!
     var frontCamera: AVCaptureDevice!
     var videoDataOutput: AVCaptureVideoDataOutput!
+    var noFaceDetectedLabel: UILabel!
     var isPhotoCaptured = false
     
     var faceDetectionRequest = VNDetectFaceLandmarksRequest()
@@ -29,13 +30,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         super.viewDidLoad()
         setupCamera()
         setupVision()
+        setupNoFaceDetectedLabel()
     }
     
     func setupCamera() {
         captureSession = AVCaptureSession()
         captureSession.beginConfiguration()
         
-        // Konfigurasi input kamera
         guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
               let input = try? AVCaptureDeviceInput(device: frontCamera),
               captureSession.canAddInput(input) else {
@@ -43,7 +44,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         captureSession.addInput(input)
         
-        // Konfigurasi output foto
         photoOutput = AVCapturePhotoOutput()
         guard captureSession.canAddOutput(photoOutput) else {
             fatalError("Unable to add photo output")
@@ -53,7 +53,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         captureSession.commitConfiguration()
         setupVideoDataOutput()
         
-        // Tampilkan preview layer
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
@@ -67,25 +66,34 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     func handleFaces(request: VNRequest, error: Error?) {
-        guard !isPhotoCaptured, let observations = request.results as? [VNFaceObservation], !observations.isEmpty else { return }
-        
-        for face in observations {
-            // Periksa apakah landmarks wajah yang diinginkan terdeteksi
-            guard let landmarks = face.landmarks,
-                    landmarks.leftEye != nil,
-                    landmarks.rightEye != nil,
-                    landmarks.outerLips != nil
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            guard let observations = request.results as? [VNFaceObservation],
+                  !observations.isEmpty,
+                  !self.isPhotoCaptured
             else {
-                continue // Salah satu fitur wajah penting tidak terdeteksi
+                return
             }
             
-            // Fitur wajah penting terdeteksi, ambil foto
-            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                let settings = AVCapturePhotoSettings()
-                self.photoOutput.capturePhoto(with: settings, delegate: self)
-                self.isPhotoCaptured = true
+            self.noFaceDetectedLabel.isHidden = true
+            
+            for face in observations {
+                guard let landmarks = face.landmarks,
+                      landmarks.leftEye != nil,
+                      landmarks.rightEye != nil,
+                      landmarks.outerLips != nil
+                else {
+                    continue
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()+1) { [weak self] in
+                    guard let self = self else { return }
+                    let settings = AVCapturePhotoSettings()
+                    self.photoOutput.capturePhoto(with: settings, delegate: self)
+                    self.isPhotoCaptured = true
+                }
+                break
             }
-            break // Hentikan loop setelah foto diambil
         }
     }
     
@@ -104,17 +112,36 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             fatalError("Could not add video data output to the session")
         }
     }
+    
+    func setupNoFaceDetectedLabel() {
+        noFaceDetectedLabel = UILabel()
+        noFaceDetectedLabel.text = "No Face Detected"
+        noFaceDetectedLabel.textColor = .black
+        noFaceDetectedLabel.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        noFaceDetectedLabel.textAlignment = .center
+        noFaceDetectedLabel.layer.cornerRadius = 10
+        noFaceDetectedLabel.layer.masksToBounds = true
+        noFaceDetectedLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noFaceDetectedLabel)
+
+        NSLayoutConstraint.activate([
+            noFaceDetectedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noFaceDetectedLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noFaceDetectedLabel.widthAnchor.constraint(equalToConstant: 200),
+            noFaceDetectedLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        noFaceDetectedLabel.isHidden = false
+    }
 }
 
 extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         guard !isPhotoCaptured, !metadataObjects.isEmpty else { return }
-        // Wajah terdeteksi, ambil foto
         let settings = AVCapturePhotoSettings()
         photoOutput.capturePhoto(with: settings, delegate: self)
     }
     
-    // Delegate method untuk menerima foto yang telah ditangkap
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) {
             delegate?.didFinishTakingPhoto(image)
