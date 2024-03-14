@@ -25,8 +25,14 @@ struct ContentView: View {
             VStack {
                 Text("Predicted Age:")
                 
-                Text(String(describing: predictor.predictedAge))
-                    .font(.largeTitle)
+                Group {
+                    if let age = predictor.predictedAge {
+                        Text(String(age))
+                    } else {
+                        Text("–")
+                    }
+                }
+                .font(.largeTitle)
             }
             
             HStack {
@@ -52,6 +58,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
+            .tint(.pink)
         }
         .padding()
         .onChange(of: image, { _, newValue in
@@ -60,9 +67,29 @@ struct ContentView: View {
             predictor.predictAge(image)
         })
         .fullScreenCover(isPresented: $showCamera) {
-            CameraView(image: $image) {
+            cameraView
+        }
+    }
+}
+
+extension ContentView {
+    @ViewBuilder
+    var cameraView: some View {
+        CameraView(image: $image) {
+            showCamera = false
+        }
+        .overlay(alignment: .topTrailing) {
+            Button {
                 showCamera = false
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.headline)
+                    .padding(8)
             }
+            .buttonStyle(.bordered)
+            .tint(.primary)
+            .clipShape(Circle())
+            .padding()
         }
     }
 }
