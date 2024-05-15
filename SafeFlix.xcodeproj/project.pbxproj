@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0F75002BF4D0B3005EECC0 /* DetailMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F74FF2BF4D0B3005EECC0 /* DetailMovieView.swift */; };
 		4B27A01D2BF37DAE00545713 /* MobileNetV2_AgePrediction.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A01C2BF37DAD00545713 /* MobileNetV2_AgePrediction.mlpackage */; };
 		4B27A0262BF3816F00545713 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0252BF3816F00545713 /* AppNavigator.swift */; };
 		4B27A0292BF382F900545713 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0282BF382F800545713 /* Movie.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B0F74FF2BF4D0B3005EECC0 /* DetailMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieView.swift; sourceTree = "<group>"; };
 		4B27A01C2BF37DAD00545713 /* MobileNetV2_AgePrediction.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MobileNetV2_AgePrediction.mlpackage; sourceTree = "<group>"; };
 		4B27A0252BF3816F00545713 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		4B27A0282BF382F800545713 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -91,9 +93,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B0F74FE2BF4D08A005EECC0 /* DetailMovie */ = {
+			isa = PBXGroup;
+			children = (
+				4B0F74FF2BF4D0B3005EECC0 /* DetailMovieView.swift */,
+			);
+			path = DetailMovie;
+			sourceTree = "<group>";
+		};
 		4B27A01E2BF37EEF00545713 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				4B0F74FE2BF4D08A005EECC0 /* DetailMovie */,
 				4B27A02A2BF3879200545713 /* Home */,
 				4B27A0242BF3801300545713 /* Camera */,
 			);
@@ -355,6 +366,7 @@
 				4B7221572BA1FB3900E19AA5 /* ContentView.swift in Sources */,
 				4B27A0292BF382F900545713 /* Movie.swift in Sources */,
 				4B27A02C2BF387CD00545713 /* HomeView.swift in Sources */,
+				4B0F75002BF4D0B3005EECC0 /* DetailMovieView.swift in Sources */,
 				4B27A01D2BF37DAE00545713 /* MobileNetV2_AgePrediction.mlpackage in Sources */,
 				4B7221552BA1FB3900E19AA5 /* SafeFlixApp.swift in Sources */,
 				4B27A0302BF38C7D00545713 /* Optional+orEmpty.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var navigator: AppNavigator
+    @StateObject var navigator: AppNavigator
     
     @State var banners = Movie.sample
     @State var bannerSelection = 0
@@ -79,8 +79,8 @@ extension HomeView {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(movies) { movie in
-                        NavigationLink {
-                            Text(movie.title)
+                        Button {
+                            navigator.navigateTo(.movieDetail(navigator: navigator, movie: movie))
                         } label: {
                             movie.poster
                                 .resizable()

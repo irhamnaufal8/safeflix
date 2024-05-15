@@ -25,7 +25,7 @@ final class AppNavigator: ObservableObject {
 }
 
 enum Route {
-    
+    case movieDetail(navigator: AppNavigator, movie: Movie)
 }
 
 extension Route: Hashable {
@@ -41,8 +41,8 @@ extension Route: Hashable {
 extension Route: View {
     var body: some View {
         switch self {
-        default:
-            return EmptyView()
+        case .movieDetail(let navigator, let movie):
+            return DetailMovieView(navigator: navigator, movie: movie)
         }
     }
 }

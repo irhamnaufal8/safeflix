@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var navigator = AppNavigator()
+    @StateObject var navigator = AppNavigator()
     
     @State var searchText = ""
     
