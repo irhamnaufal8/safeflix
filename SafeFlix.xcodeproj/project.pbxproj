@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B27A01D2BF37DAE00545713 /* MobileNetV2_AgePrediction.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A01C2BF37DAD00545713 /* MobileNetV2_AgePrediction.mlpackage */; };
+		4B27A0262BF3816F00545713 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0252BF3816F00545713 /* AppNavigator.swift */; };
+		4B27A0292BF382F900545713 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A0282BF382F800545713 /* Movie.swift */; };
+		4B27A02C2BF387CD00545713 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A02B2BF387CD00545713 /* HomeView.swift */; };
+		4B27A02E2BF38BD700545713 /* Image+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A02D2BF38BD700545713 /* Image+Default.swift */; };
+		4B27A0302BF38C7D00545713 /* Optional+orEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B27A02F2BF38C7D00545713 /* Optional+orEmpty.swift */; };
 		4B7221552BA1FB3900E19AA5 /* SafeFlixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221542BA1FB3900E19AA5 /* SafeFlixApp.swift */; };
 		4B7221572BA1FB3900E19AA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221562BA1FB3900E19AA5 /* ContentView.swift */; };
 		4B7221592BA1FB3B00E19AA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7221582BA1FB3B00E19AA5 /* Assets.xcassets */; };
@@ -14,7 +20,6 @@
 		4B7221662BA1FB3B00E19AA5 /* SafeFlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221652BA1FB3B00E19AA5 /* SafeFlixTests.swift */; };
 		4B7221702BA1FB3B00E19AA5 /* SafeFlixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72216F2BA1FB3B00E19AA5 /* SafeFlixUITests.swift */; };
 		4B7221722BA1FB3B00E19AA5 /* SafeFlixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221712BA1FB3B00E19AA5 /* SafeFlixUITestsLaunchTests.swift */; };
-		4B72217F2BA1FBAE00E19AA5 /* MobileNetV2_AgePrediction.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 4B72217E2BA1FBAE00E19AA5 /* MobileNetV2_AgePrediction.mlpackage */; };
 		4B7221812BA2064000E19AA5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221802BA2064000E19AA5 /* CameraView.swift */; };
 		4B7221832BA206EC00E19AA5 /* UIImage+prefixBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221822BA206EC00E19AA5 /* UIImage+prefixBuffer.swift */; };
 		4B7221852BA2071300E19AA5 /* AgePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7221842BA2071300E19AA5 /* AgePredictor.swift */; };
@@ -39,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B27A01C2BF37DAD00545713 /* MobileNetV2_AgePrediction.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MobileNetV2_AgePrediction.mlpackage; sourceTree = "<group>"; };
+		4B27A0252BF3816F00545713 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		4B27A0282BF382F800545713 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4B27A02B2BF387CD00545713 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4B27A02D2BF38BD700545713 /* Image+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Default.swift"; sourceTree = "<group>"; };
+		4B27A02F2BF38C7D00545713 /* Optional+orEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+orEmpty.swift"; sourceTree = "<group>"; };
 		4B7221512BA1FB3900E19AA5 /* SafeFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7221542BA1FB3900E19AA5 /* SafeFlixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeFlixApp.swift; sourceTree = "<group>"; };
 		4B7221562BA1FB3900E19AA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,7 +60,6 @@
 		4B72216B2BA1FB3B00E19AA5 /* SafeFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B72216F2BA1FB3B00E19AA5 /* SafeFlixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeFlixUITests.swift; sourceTree = "<group>"; };
 		4B7221712BA1FB3B00E19AA5 /* SafeFlixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeFlixUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4B72217E2BA1FBAE00E19AA5 /* MobileNetV2_AgePrediction.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MobileNetV2_AgePrediction.mlpackage; sourceTree = "<group>"; };
 		4B7221802BA2064000E19AA5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		4B7221822BA206EC00E19AA5 /* UIImage+prefixBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+prefixBuffer.swift"; sourceTree = "<group>"; };
 		4B7221842BA2071300E19AA5 /* AgePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgePredictor.swift; sourceTree = "<group>"; };
@@ -81,13 +91,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B27A01E2BF37EEF00545713 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				4B27A02A2BF3879200545713 /* Home */,
+				4B27A0242BF3801300545713 /* Camera */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		4B27A01F2BF37EF400545713 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4B27A0202BF37F1400545713 /* Core */,
+				4B27A0272BF382E200545713 /* Entity */,
+				4B27A0212BF37F5D00545713 /* Extension */,
+				4B27A0222BF37F6D00545713 /* Resources */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4B27A0202BF37F1400545713 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4B7221842BA2071300E19AA5 /* AgePredictor.swift */,
+				4B27A0252BF3816F00545713 /* AppNavigator.swift */,
+				4B7221562BA1FB3900E19AA5 /* ContentView.swift */,
+				4B7221542BA1FB3900E19AA5 /* SafeFlixApp.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4B27A0212BF37F5D00545713 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4B7221822BA206EC00E19AA5 /* UIImage+prefixBuffer.swift */,
+				4B27A02F2BF38C7D00545713 /* Optional+orEmpty.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4B27A0222BF37F6D00545713 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4B27A01C2BF37DAD00545713 /* MobileNetV2_AgePrediction.mlpackage */,
+				4B7221582BA1FB3B00E19AA5 /* Assets.xcassets */,
+				4B27A02D2BF38BD700545713 /* Image+Default.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4B27A0242BF3801300545713 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				4B7221802BA2064000E19AA5 /* CameraView.swift */,
+				4B7221862BA20CE700E19AA5 /* CameraViewController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		4B27A0272BF382E200545713 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4B27A0282BF382F800545713 /* Movie.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4B27A02A2BF3879200545713 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4B27A02B2BF387CD00545713 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		4B7221482BA1FB3900E19AA5 = {
 			isa = PBXGroup;
 			children = (
+				4B7221522BA1FB3900E19AA5 /* Products */,
 				4B7221532BA1FB3900E19AA5 /* SafeFlix */,
 				4B7221642BA1FB3B00E19AA5 /* SafeFlixTests */,
 				4B72216E2BA1FB3B00E19AA5 /* SafeFlixUITests */,
-				4B7221522BA1FB3900E19AA5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,15 +189,9 @@
 		4B7221532BA1FB3900E19AA5 /* SafeFlix */ = {
 			isa = PBXGroup;
 			children = (
-				4B72217E2BA1FBAE00E19AA5 /* MobileNetV2_AgePrediction.mlpackage */,
-				4B7221542BA1FB3900E19AA5 /* SafeFlixApp.swift */,
-				4B7221562BA1FB3900E19AA5 /* ContentView.swift */,
-				4B7221582BA1FB3B00E19AA5 /* Assets.xcassets */,
+				4B27A01F2BF37EF400545713 /* Common */,
+				4B27A01E2BF37EEF00545713 /* Feature */,
 				4B72215A2BA1FB3B00E19AA5 /* Preview Content */,
-				4B7221802BA2064000E19AA5 /* CameraView.swift */,
-				4B7221822BA206EC00E19AA5 /* UIImage+prefixBuffer.swift */,
-				4B7221842BA2071300E19AA5 /* AgePredictor.swift */,
-				4B7221862BA20CE700E19AA5 /* CameraViewController.swift */,
 			);
 			path = SafeFlix;
 			sourceTree = "<group>";
@@ -272,11 +351,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B72217F2BA1FBAE00E19AA5 /* MobileNetV2_AgePrediction.mlpackage in Sources */,
 				4B7221832BA206EC00E19AA5 /* UIImage+prefixBuffer.swift in Sources */,
 				4B7221572BA1FB3900E19AA5 /* ContentView.swift in Sources */,
+				4B27A0292BF382F900545713 /* Movie.swift in Sources */,
+				4B27A02C2BF387CD00545713 /* HomeView.swift in Sources */,
+				4B27A01D2BF37DAE00545713 /* MobileNetV2_AgePrediction.mlpackage in Sources */,
 				4B7221552BA1FB3900E19AA5 /* SafeFlixApp.swift in Sources */,
+				4B27A0302BF38C7D00545713 /* Optional+orEmpty.swift in Sources */,
+				4B27A0262BF3816F00545713 /* AppNavigator.swift in Sources */,
 				4B7221872BA20CE700E19AA5 /* CameraViewController.swift in Sources */,
+				4B27A02E2BF38BD700545713 /* Image+Default.swift in Sources */,
 				4B7221852BA2071300E19AA5 /* AgePredictor.swift in Sources */,
 				4B7221812BA2064000E19AA5 /* CameraView.swift in Sources */,
 			);
@@ -445,6 +529,7 @@
 				DEVELOPMENT_TEAM = 39B633LG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MobileNetV2;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app need to access your camera to predict your age matching the film's rating";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -457,7 +542,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.irhamnaufal8.SafeFlix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.irhamnaufal8.SafeFlixMobileNetV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -476,6 +561,7 @@
 				DEVELOPMENT_TEAM = 39B633LG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MobileNetV2;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app need to access your camera to predict your age matching the film's rating";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -488,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.irhamnaufal8.SafeFlix;
+				PRODUCT_BUNDLE_IDENTIFIER = com.irhamnaufal8.SafeFlixMobileNetV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

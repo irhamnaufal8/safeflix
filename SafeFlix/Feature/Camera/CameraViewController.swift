@@ -88,9 +88,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()+1) { [weak self] in
                     guard let self = self else { return }
-                    let settings = AVCapturePhotoSettings()
-                    self.photoOutput.capturePhoto(with: settings, delegate: self)
-                    self.isPhotoCaptured = true
+                    self.capturePhotoIfFaceDetected()
                 }
                 break
             }
@@ -100,6 +98,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     func capturePhotoIfFaceDetected() {
         let settings = AVCapturePhotoSettings()
         photoOutput.capturePhoto(with: settings, delegate: self)
+        isPhotoCaptured = true
     }
     
     func setupVideoDataOutput() {
@@ -138,8 +137,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         guard !isPhotoCaptured, !metadataObjects.isEmpty else { return }
-        let settings = AVCapturePhotoSettings()
-        photoOutput.capturePhoto(with: settings, delegate: self)
+        capturePhotoIfFaceDetected()
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
