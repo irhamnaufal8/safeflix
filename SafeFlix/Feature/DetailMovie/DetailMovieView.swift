@@ -31,52 +31,50 @@ struct DetailMovieView: View {
                         .ignoresSafeArea()
                     
                     
-                    Section(content: {
-                        Text("\(movie.rating.rawValue)+")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .padding(6)
-                            .padding(.horizontal, 4)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.secondary)
-                            )
-                            .padding(.bottom, 8)
-                            .padding(.horizontal)
-                        
-                        Button {
-                            watchAction()
-                        } label: {
-                            Text("\(Image(systemName: "play.fill"))   Watch Now")
-                                .bold()
-                                .foregroundStyle(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.accentColor)
-                                .cornerRadius(4)
-                        }
-                        .padding(.horizontal)
-                        
-                        VStack(alignment: .leading) {
-                            ForEach(0...5, id: \.self) { _ in
-                                Text(movie.synopsis)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
-                    }, header: {
-                        (
-                            Text(movie.title)
-                                .bold()
-                            +
-                            Text(" (\(movie.year))")
+                    (
+                        Text(movie.title)
+                            .bold()
+                        +
+                        Text(" (\(movie.year))")
+                    )
+                    .font(.title)
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color.black)
+                    
+                    Text("\(movie.rating.rawValue)+")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(6)
+                        .padding(.horizontal, 4)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.secondary)
                         )
-                        .font(.title)
+                        .padding(.bottom, 8)
                         .padding(.horizontal)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.black)
-                    })
+                    
+                    Button {
+                        watchAction()
+                    } label: {
+                        Text("\(Image(systemName: "play.fill"))   Watch Now")
+                            .bold()
+                            .foregroundStyle(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accentColor)
+                            .cornerRadius(4)
+                    }
+                    .padding(.horizontal)
+                    
+                    VStack(alignment: .leading) {
+                        ForEach(0...5, id: \.self) { _ in
+                            Text(movie.synopsis)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
                 }
             }
             .ignoresSafeArea()
@@ -85,6 +83,9 @@ struct DetailMovieView: View {
             } message: {
                 Text(alertMessage)
             }
+        }
+        .onAppear {
+            AppDelegate.orientationLock = .portrait
         }
         .overlay(alignment: .topLeading) {
             Button {
@@ -96,7 +97,7 @@ struct DetailMovieView: View {
                         .frame(width: 30, height: 30)
                     
                     Image(systemName: "chevron.left.circle.fill")
-                        
+                    
                         .foregroundStyle(.ultraThinMaterial)
                         .padding(.horizontal)
                 }
@@ -138,7 +139,7 @@ extension DetailMovieView {
 extension DetailMovieView {
     func watchAction() {
         if movie.rating == .all {
-            
+            navigator.navigateTo(.videoPlayer(navigator: navigator, movie: movie))
         } else {
             showCamera = true
         }
@@ -153,7 +154,7 @@ extension DetailMovieView {
     func givePrediction () {
         guard let age = predictor.predictedAge else { return }
         if age >= movie.rating.rawValue {
-            
+            navigator.navigateTo(.videoPlayer(navigator: navigator, movie: movie))
         } else {
             alertMessage = "You are still under age. Please watch another movie :) (Detected Age: \(age))"
             showAlert = true
