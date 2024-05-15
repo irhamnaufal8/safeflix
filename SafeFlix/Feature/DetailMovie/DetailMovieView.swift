@@ -116,22 +116,29 @@ struct DetailMovieView: View {
 extension DetailMovieView {
     @ViewBuilder
     var cameraView: some View {
-        CameraView(image: $image) {
-            showCamera = false
-        }
-        .overlay(alignment: .topTrailing) {
-            Button {
+        GeometryReader { geo in
+            CameraView(image: $image) {
                 showCamera = false
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.headline)
-                    .padding(8)
             }
-            .buttonStyle(.bordered)
-            .tint(.primary)
-            .clipShape(Circle())
-            .padding()
+            .overlay {
+                Color.black.opacity(0.05)
+            }
+            .shineEffect(height: geo.size.height)
+            .overlay(alignment: .topTrailing) {
+                Button {
+                    showCamera = false
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.headline)
+                        .padding(8)
+                }
+                .buttonStyle(.bordered)
+                .tint(.primary)
+                .clipShape(Circle())
+                .padding()
+            }
         }
+        .ignoresSafeArea()
         .onDisappear { givePrediction() }
     }
 }
